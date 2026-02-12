@@ -47,5 +47,20 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy deployment and service file') {
+            steps {
+                script {
+                    withKubeConfig([credentialsId: 'KUBECONFIG_ID']) {
+                        // 1. Aplica la configuración (como ya tenías)
+                        sh 'kubectl apply -f deployment-svc.yaml'
+                        
+                        // 2. AGREGA ESTO: Obliga a bajar la nueva imagen
+                        // (Cambia '' por el nombre real que te salió en el paso anterior)
+                        sh 'kubectl rollout restart deployment/react-app-deployment'
+                    }
+                }
+            }
+        }
     }
 }
