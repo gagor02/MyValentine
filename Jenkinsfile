@@ -57,7 +57,7 @@ pipeline {
                         
                         // 2. AGREGA ESTO: Obliga a bajar la nueva imagen
                         // (Cambia '' por el nombre real que te salió en el paso anterior)
-                        sh 'kubectl rollout restart deployment/react-app-deployment'
+                        sh 'kubectl rollout restart deployment react-app-deployment'
                     }
                 }
             }
