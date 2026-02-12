@@ -15,7 +15,7 @@ spec:
       containers:
       - name: myvalentine
         # Asegúrate que este nombre coincida con el que pongas en el Jenkinsfile
-        image: gagor02/myvalentine:latest 
+        image: gagor0202/myvalentine:latest 
         ports:
         - containerPort: 80
 
