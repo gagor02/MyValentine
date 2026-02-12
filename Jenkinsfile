@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // CAMBIA ESTO POR TU USUARIO REAL
-        DOCKER_IMAGE = 'gagor02/myvalentine'
+        DOCKER_IMAGE = 'gagor0202/myvalentine'
         DOCKER_CREDENTIALS_ID = 'docker_hub' // El ID que pusiste en Jenkins
         KUBECONFIG_ID = 'kubernetes_config'  // El ID que pusiste en Jenkins
     }
@@ -41,7 +41,7 @@ pipeline {
                 script {
                     withKubeConfig([credentialsId: KUBECONFIG_ID]) {
                         // Reemplaza la imagen en el YAML con la versión nueva
-                        sh "sed -i 's|gagor02/myvalentine:latest|${DOCKER_IMAGE}:${BUILD_NUMBER}|g' k8s-deploy.yaml"
+                        sh "sed -i 's|gagor0202/myvalentine:latest|${DOCKER_IMAGE}:${BUILD_NUMBER}|g' k8s-deploy.yaml"
                         sh "kubectl apply -f deployment-svc.yaml"
                     }
                 }
