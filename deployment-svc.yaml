@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myvalentine
+  template:
+    metadata:
+      labels:
+        app: myvalentine
+    spec:
+      containers:
+      - name: myvalentine
+        # Asegúrate que este nombre coincida con el que pongas en el Jenkinsfile
+        image: gagor02/myvalentine:latest 
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-app-service
+spec:
+  type: ClusterIP
+  selector:
+    app: myvalentine
+  ports:
+    - port: 80
+      targetPort: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: react-app-ingress
+spec:
+  rules:
+  # Usamos el truco de nip.io para que funcione sin dominio comprado
+  # Ejemplo: shadia.74.208.7.246.nip.io
+  - host: shadia.74.208.7.246.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: react-app-service
+            port:
+              number: 80
