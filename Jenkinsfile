@@ -40,19 +40,20 @@ pipeline {
             steps {
                 script {
                     withKubeConfig([credentialsId: KUBECONFIG_ID]) {
-                        // 1. Aplicamos la estructura base (por si cambiaste puertos o configuración)
+                        // 1. Aplica el archivo base (esto pone la imagen en :latest)
                         sh "kubectl apply -f deployment-svc.yaml"
                         
-                        // 2. OBLIGAMOS a usar la nueva versión específica del Build
-                        // Esto elimina la necesidad de usar 'sed' y asegura la actualización
-                        // Sintaxis: kubectl set image deployment/<nombre-deployment> <nombre-contenedor>=<imagen>
+                        // 2. FUERZA la actualización al número de build actual
+                        // Estructura: deployment/<nombre-del-deploy> <nombre-del-contenedor>=<imagen>
                         
-                        // OJO: Asegúrate de que 'react-app-deployment' es el nombre real en tu YAML
-                        // y 'react-app' es el nombre de tu contenedor en el YAML.
+                        // AQUÍ ESTABA EL DETALLE: El contenedor se llama 'myvalentine' en tu YAML
                         sh "kubectl set image deployment/react-app-deployment myvalentine=${DOCKER_IMAGE}:${BUILD_NUMBER}"
                         
-                        // 3. (Opcional) Verificamos que el despliegue se complete
+                        // 3. Verifica el estado del cambio
                         sh "kubectl rollout status deployment/react-app-deployment"
+                        
+                        // 4. (Opcional) Imprime qué imagen quedó para que lo veas en los logs de Jenkins
+                        sh "kubectl get deployment react-app-deployment -o=jsonpath='{.spec.template.spec.containers[0].image}'"
                     }
                 }
             }
