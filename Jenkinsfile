@@ -40,20 +40,15 @@ pipeline {
             steps {
                 script {
                     withKubeConfig([credentialsId: KUBECONFIG_ID]) {
-                        // 1. Aplica el archivo base (esto pone la imagen en :latest)
+                        // 1. Aplica la configuración (asegura que el deployment exista)
                         sh "kubectl apply -f deployment-svc.yaml"
                         
-                        // 2. FUERZA la actualización al número de build actual
-                        // Estructura: deployment/<nombre-del-deploy> <nombre-del-contenedor>=<imagen>
+                        // 2. FUERZA el reinicio para que baje la imagen nueva (:latest)
+                        // Solo necesitas el nombre del Deployment (react-app-deployment)
+                        sh "kubectl rollout restart deployment/react-app-deployment"
                         
-                        // AQUÍ ESTABA EL DETALLE: El contenedor se llama 'myvalentine' en tu YAML
-                        sh "kubectl set image deployment/react-app-deployment myvalentine=${DOCKER_IMAGE}:${BUILD_NUMBER}"
-                        
-                        // 3. Verifica el estado del cambio
+                        // 3. (Opcional pero recomendado) Espera a que termine para poner el semáforo en verde
                         sh "kubectl rollout status deployment/react-app-deployment"
-                        
-                        // 4. (Opcional) Imprime qué imagen quedó para que lo veas en los logs de Jenkins
-                        sh "kubectl get deployment react-app-deployment -o=jsonpath='{.spec.template.spec.containers[0].image}'"
                     }
                 }
             }
