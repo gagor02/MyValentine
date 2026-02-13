@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: '*/main', url: 'https://github.com/gagor02/MyValentine'
+                git branch: 'main', url: 'https://github.com/gagor02/MyValentine'
             }
         }
         
