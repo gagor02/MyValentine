@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/gagor02/MyValentine'
+                git branch: '*/main', url: 'https://github.com/gagor02/MyValentine'
             }
         }
         
@@ -40,14 +40,17 @@ pipeline {
             steps {
                 script {
                     withKubeConfig([credentialsId: KUBECONFIG_ID]) {
-                        // 1. Aplica la configuración (asegura que el deployment exista)
+                        // 1. Aplica cambios de configuración si los hubiera
                         sh "kubectl apply -f deployment-svc.yaml"
                         
-                        // 2. FUERZA el reinicio para que baje la imagen nueva (:latest)
-                        // Solo necesitas el nombre del Deployment (react-app-deployment)
-                        sh "kubectl rollout restart deployment/react-app-deployment"
+                        // 2. ¡AQUÍ ESTÁ LA MAGIA!
+                        // Sintaxis: deployment/<nombre-del-deployment> <nombre-del-contenedor>=<imagen>
                         
-                        // 3. (Opcional pero recomendado) Espera a que termine para poner el semáforo en verde
+                        // Deployment: react-app-deployment (Sacado de tu YAML)
+                        // Contenedor: myvalentine        (Sacado de tu YAML)
+                        sh "kubectl set image deployment/react-app-deployment myvalentine=${DOCKER_IMAGE}:${BUILD_NUMBER}"
+                        
+                        // 3. Verifica que la actualización terminó bien
                         sh "kubectl rollout status deployment/react-app-deployment"
                     }
                 }
