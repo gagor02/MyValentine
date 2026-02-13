@@ -16,6 +16,7 @@ spec:
       - name: myvalentine
         # Asegúrate que este nombre coincida con el que pongas en el Jenkinsfile
         image: gagor0202/myvalentine:latest 
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 
