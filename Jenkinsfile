@@ -40,9 +40,19 @@ pipeline {
             steps {
                 script {
                     withKubeConfig([credentialsId: KUBECONFIG_ID]) {
-                        // Reemplaza la imagen en el YAML con la versión nueva
-                        sh "sed -i 's|gagor0202/myvalentine:latest|${DOCKER_IMAGE}:${BUILD_NUMBER}|g' deployment-svc.yaml"
+                        // 1. Aplicamos la estructura base (por si cambiaste puertos o configuración)
                         sh "kubectl apply -f deployment-svc.yaml"
+                        
+                        // 2. OBLIGAMOS a usar la nueva versión específica del Build
+                        // Esto elimina la necesidad de usar 'sed' y asegura la actualización
+                        // Sintaxis: kubectl set image deployment/<nombre-deployment> <nombre-contenedor>=<imagen>
+                        
+                        // OJO: Asegúrate de que 'react-app-deployment' es el nombre real en tu YAML
+                        // y 'react-app' es el nombre de tu contenedor en el YAML.
+                        sh "kubectl set image deployment/react-app-deployment myvalentine=${DOCKER_IMAGE}:${BUILD_NUMBER}"
+                        
+                        // 3. (Opcional) Verificamos que el despliegue se complete
+                        sh "kubectl rollout status deployment/react-app-deployment"
                     }
                 }
             }

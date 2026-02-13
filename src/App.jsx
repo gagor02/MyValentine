@@ -10,6 +10,7 @@ function App() {
     <>
       <div>
         <h2>Hola aaaaaaaaaa</h2>
+        <h3>Este es un mensaje de prueba</h3>
       </div>
     </>
   )
