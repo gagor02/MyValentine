@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div>
-        <h2>Hola tonotos</h2>
+        <h2>Hola aaaaaaaaaa</h2>
       </div>
     </>
   )
