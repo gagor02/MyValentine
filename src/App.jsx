@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import BottomNav from './components/UI/BottomNav.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <h2>Hola aaaaaaaaaa</h2>
-        <h3>Este es un mensaje</h3>
-      </div>
+   
+      <main>
+        <Outlet />
+      </main>
+       <BottomNav />
+      
     </>
   )
 }
