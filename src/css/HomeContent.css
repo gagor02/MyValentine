@@ -49,12 +49,12 @@
 /* "Un mensaje especial para ti" */
 .title-container h3 {
   font-size: 2.2rem;
-  font-weight: bold;
+  font-weight: 700;
   color: #1a1a1a; /* Texto bien oscuro para contraste */
   line-height: 1.1;
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
-  font-family: cursive;
+  font-style: normal; /* Fuente elegante y romántica */
 }
 
 /* =========================================

@@ -62,3 +62,33 @@
   /* El color rosa/rojo fuerte de tu mockup para indicar dónde está */
   color: #ea4b6e; 
 }
+
+/* --- Estado Deshabilitado --- */
+.nav-item.disabled {
+  opacity: 0.5; /* Los hace ver un poco transparentes/apagados */
+  cursor: default; /* Quita la manita de clic */
+  position: relative; /* Necesario para que la etiqueta flote respecto a este botón */
+}
+
+/* Evita el efecto de hundimiento en botones que no funcionan */
+.nav-item.disabled:active {
+  transform: none; 
+}
+
+/* --- Etiqueta "Pronto" --- */
+.coming-soon-badge {
+  position: absolute;
+  top: -8px; /* Lo empuja hacia arriba del icono */
+  right: 5px; /* Lo mueve un poquito a la derecha */
+  background: linear-gradient(135deg, #f43f5e, #e11d48); /* Gradiente rojo/rosa */
+  color: white;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 5px rgba(225, 29, 72, 0.4);
+  pointer-events: none; /* Asegura que no estorbe si se intenta tocar la pantalla */
+  z-index: 2;
+}

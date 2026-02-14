@@ -130,7 +130,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: -1.5rem; /* Sube las fotos para que se superpongan un poco con la carta */
+  margin-top: -0.3rem; /* Sube las fotos para que se superpongan un poco con la carta */
   z-index: 5;
 }
 
@@ -158,4 +158,18 @@
 
 .photo-right {
   transform: rotate(8deg) translateY(15px);
+}
+
+.polaroid {
+  /* ... tus estilos anteriores ... */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  filter: brightness(0.95); /* Ligeramente opacas por defecto */
+}
+
+/* Al tocar o pasar el mouse, se iluminan, se enderezan un poco y se elevan */
+.polaroid:hover, .polaroid:active {
+  transform: rotate(0deg) translateY(0) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+  filter: brightness(1.05);
+  z-index: 20; /* Asegura que la foto tocada se ponga por encima de la otra */
 }
