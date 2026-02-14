@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
 // Componentes
+import HomeScreen from './pages/HomeScreen.jsx';
 
 
 const App = lazy(() => import('./App.jsx'));
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1>Shadia</h1>
+        element: <HomeScreen />
       },
       {
         path: '/hola',

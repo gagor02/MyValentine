@@ -1,0 +1,161 @@
+/* =========================================
+   Contenedor Principal de la Carta
+   ========================================= */
+.letter-page-container {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Espacio extra abajo para hacer scroll y ver bien las fotos */
+  padding-bottom: 4rem; 
+}
+
+/* =========================================
+   Header (Botones superior)
+   ========================================= */
+.letter-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.icon-btn:active {
+  transform: scale(0.9);
+}
+
+/* =========================================
+   Tarjeta de Papel Central
+   ========================================= */
+.paper-card {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  z-index: 10;
+}
+
+/* El borde degradado superior que tiene tu mockup */
+.card-top-border {
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, #fbcfe8, #f43f5e);
+}
+
+.card-content {
+  padding: 2.5rem 1.5rem;
+}
+
+.icon-mail {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.salutation {
+  font-family: 'Georgia', serif; /* Fuente elegante tipo serif */
+  font-style: italic;
+  font-size: 1.4rem;
+  color: #ea4b6e;
+  margin-bottom: 1.5rem;
+}
+
+.letter-body p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #3f3f46;
+  margin-bottom: 1rem;
+}
+
+.closing {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #ea4b6e;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Círculo con el corazón adentro */
+.heart-divider {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.mini-heart {
+  width: 40px;
+  height: 40px;
+  background-color: #fdf2f8; /* Círculo rosado clarito */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Corazón creado con CSS puro dentro del círculo */
+.mini-heart::after {
+  content: "❤";
+  color: #ea4b6e;
+  font-size: 1.2rem;
+}
+
+.card-footer {
+  background-color: #fff1f2; /* Fondo del footer super sutil */
+  padding: 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: #fda4af;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* =========================================
+   Fotos (Polaroids Inclinadas)
+   ========================================= */
+.photos-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -1.5rem; /* Sube las fotos para que se superpongan un poco con la carta */
+  z-index: 5;
+}
+
+.polaroid {
+  background: white;
+  padding: 0.4rem;
+  border-radius: 6px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 45%;
+  max-width: 160px;
+}
+
+.polaroid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Efecto de inclinación para que se vean arrojadas sobre la mesa */
+.photo-left {
+  transform: rotate(-6deg) translateY(10px);
+  margin-right: -10px; /* Hace que se encimen ligeramente */
+}
+
+.photo-right {
+  transform: rotate(8deg) translateY(15px);
+}
