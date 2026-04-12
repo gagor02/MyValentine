@@ -14,7 +14,7 @@ const HomeContent = ({ onOpen }) => {
               Para:<span>Shadia</span>
             </h1>
             <h2>
-              De:<span>Gabriel</span>
+              De:<span>Gabo</span>
             </h2>
           </div>
           <div className="letter-img-container">
