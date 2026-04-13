@@ -38,7 +38,6 @@ jobs:
           push: true
           tags: gagor0202/myvalentine:latest, gagor0202/myvalentine:${{ github.run_number }}
 
-      # --- ¡AQUÍ EMPIEZA LA MAGIA PRO! ---
       - name: 💻 Desplegar Automáticamente en el Servidor
         uses: appleboy/ssh-action@master
         with:
@@ -48,7 +47,6 @@ jobs:
           script_stop: true
           script: |
             echo "Conectado al servidor. Actualizando a la versión ${{ github.run_number }}..."
-            # ESTA ES LA LÍNEA MÁGICA: Obliga a Kubernetes a usar la imagen exacta que se acaba de crear
             kubectl set image deployment/react-app-deployment myvalentine=gagor0202/myvalentine:${{ github.run_number }}
             kubectl rollout status deployment/react-app-deployment
-            echo "¡Despliegue exitoso, Capitán!"
+            echo "¡Despliegue exitoso!"
