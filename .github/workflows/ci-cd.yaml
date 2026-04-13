@@ -45,13 +45,10 @@ jobs:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          # Desactivamos comprobaciones estrictas para evitar errores de primera conexión
           script_stop: true
-          envs: GITHUB_RUN_NUMBER
           script: |
-            echo "Conectado al servidor. Reiniciando Kubernetes..."
-            # Forzamos a Kubernetes a bajar la nueva imagen
-            kubectl rollout restart deployment/react-app-deployment
-            # Esperamos a que termine para reportar éxito
+            echo "Conectado al servidor. Actualizando a la versión ${{ github.run_number }}..."
+            # ESTA ES LA LÍNEA MÁGICA: Obliga a Kubernetes a usar la imagen exacta que se acaba de crear
+            kubectl set image deployment/react-app-deployment myvalentine=gagor0202/myvalentine:${{ github.run_number }}
             kubectl rollout status deployment/react-app-deployment
             echo "¡Despliegue exitoso, Capitán!"
