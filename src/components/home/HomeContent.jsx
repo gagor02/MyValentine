@@ -7,7 +7,7 @@ const HomeContent = ({ onOpen }) => {
       <div className="fade-in-screen">
         <div className="content-container">
           <div className="title-container">
-            <h3>Un mensaje especial para tí;)</h3>
+            <h3>Un mensaje especial para mi novia Shadia</h3>
           </div>
           <div className="title-container">
             <h1>
@@ -20,7 +20,7 @@ const HomeContent = ({ onOpen }) => {
           <div className="letter-img-container">
             <img src={carta} alt="Carta de Gabriel pa Shadia" />
           </div>
-          <div className="btn-container">
+          {/* <div className="btn-container">
             <button onClick={onOpen}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ const HomeContent = ({ onOpen }) => {
               Abrir mi tarjeta
             </button>
             <span>TOCA PARA DESCUBIR</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
