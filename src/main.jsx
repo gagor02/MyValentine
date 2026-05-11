@@ -9,6 +9,7 @@ import './index.css';
 
 // Componentes
 import HomeScreen from './pages/HomeScreen.jsx';
+import FirstMonthScreen from './pages/FirstMonthScreen.jsx';
 
 
 const App = lazy(() => import('./App.jsx'));
@@ -22,8 +23,8 @@ const router = createBrowserRouter([
         element: <HomeScreen />
       },
       {
-        path: '/hola',
-        element: <h1>Hola</h1>
+        path: '/FirstMont',
+        element: <FirstMonthScreen />
       }
     ]
   }
