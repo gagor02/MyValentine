@@ -7,7 +7,7 @@ const HomeContent = ({ onOpen }) => {
       <div className="fade-in-screen">
         <div className="content-container">
           <div className="title-container">
-            <h3>Un mensaje especial para mi novia Shadia</h3>
+            <h3>{`Un mensaje especial para mi amor <3`}</h3>
           </div>
           <div className="title-container">
             <h1>

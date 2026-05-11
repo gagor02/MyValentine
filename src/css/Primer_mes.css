@@ -1,0 +1,73 @@
+/* primer-mes.css */
+.aniversario-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #fdf2f8; 
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  border: 2px solid #fbcfe8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.aniversario-titulo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ef4444;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.aniversario-mensaje {
+  color: #374151;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.contador-grid {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  flex-wrap: wrap; /* Ayuda a que no se rompa en pantallas pequeñas */
+  justify-content: center;
+}
+
+.contador-caja {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+/* Un pequeño efecto al pasar el mouse */
+.contador-caja:hover {
+  transform: translateY(-5px);
+}
+
+.contador-numero {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #db2777;
+  margin: 0;
+}
+
+.contador-etiqueta {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+}

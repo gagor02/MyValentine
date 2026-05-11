@@ -34,11 +34,10 @@
   background: none;
   border: none;
   cursor: pointer;
-  
-  /* Color inactivo (el tono café/vino apagado de tu imagen) */
   color: #8c7379; 
   transition: color 0.2s ease, transform 0.1s ease;
   padding: 0.5rem;
+  position: relative; /* <--- ¡AGREGA ESTA LÍNEA! */
 }
 
 .nav-item:active {
@@ -91,4 +90,30 @@
   box-shadow: 0 2px 5px rgba(225, 29, 72, 0.4);
   pointer-events: none; /* Asegura que no estorbe si se intenta tocar la pantalla */
   z-index: 2;
+}
+
+/* --- Etiqueta "Nuevo" con animación --- */
+.new-badge {
+  position: absolute;
+  top: -5px;
+  right: -2px;
+  background: linear-gradient(135deg, #10b981, #059669); /* Un verde esmeralda elegante que resalta */
+  color: white;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 5px rgba(16, 185, 129, 0.4);
+  pointer-events: none;
+  z-index: 2;
+  animation: latido-nuevo 2s infinite; /* Llama a la animación de abajo */
+}
+
+/* Animación para que el letrero palpite suavemente */
+@keyframes latido-nuevo {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
