@@ -1,0 +1,54 @@
+/* --- Pantalla de Bienvenida --- */
+.pantalla-bienvenida {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fdf2f8; /* El mismo rosa suave de tu tema */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Por encima de todo */
+}
+
+.bienvenida-contenido {
+  text-align: center;
+  animation: latido-suave 2s infinite;
+}
+
+.bienvenida-titulo {
+  color: #db2777;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.bienvenida-texto {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.boton-entrar {
+  background-color: #e11d48;
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.boton-entrar:hover {
+  background-color: #be123c;
+  transform: scale(1.05);
+}
+
+@keyframes latido-suave {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}

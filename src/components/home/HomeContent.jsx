@@ -35,7 +35,7 @@ const HomeContent = ({ onOpen }) => {
               </svg>
               Abrir mi tarjeta
             </button>
-            <span>TOCA PARA DESCUBIR</span>
+            <span>TOCA PARA DESCUBRIR</span>
           </div>
         </div>
       </div>
