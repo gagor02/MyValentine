@@ -1,0 +1,31 @@
+/* --- La Animación Maestra --- */
+@keyframes deslizarYAparecer {
+  0% {
+    opacity: 0;
+    transform: translateY(40px); /* Empieza invisible y 40px más abajo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Termina visible y en su lugar original */
+  }
+}
+
+/* Opcional: un contenedor para dar espacio al final de la pantalla */
+.pantalla-mes-container {
+  padding-bottom: 5rem; /* Da espacio para que el BottomNav no tape el contenido */
+  overflow-x: hidden; /* Evita barras de desplazamiento horizontales accidentales */
+}
+
+/* --- La clase que hace la magia --- */
+.aparecer-suave {
+  /* Empezamos en opacidad 0 para que no parpadee antes de animarse */
+  opacity: 0; 
+  /* 1.2 segundos de duración, empieza rápido y frena suave (ease-out) */
+  animation: deslizarYAparecer 1.2s ease-out forwards;
+}
+
+/* --- El Truco en Cascada (Delay) --- */
+.retraso-recuerdos {
+  /* Obliga a la sección de recuerdos a esperar 0.6 segundos antes de salir */
+  animation-delay: 0.6s;
+}
